@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 inherit swupdate
 
 SRC_URI = "\
-    file://emmcsetup.lua \
+    file://update.sh \
     file://sw-description \
 "
 
@@ -16,4 +16,4 @@ IMAGE_DEPENDS = "poddota-image"
 # images and files that will be included in the .swu image
 SWUPDATE_IMAGES = "poddota-image-beaglebone"
 
-SWUPDATE_IMAGES_FSTYPES[poddota-image-beaglebone] = ".tar.xz"
+SWUPDATE_IMAGES_FSTYPES[poddota-image-beaglebone] = ".ext4.gz"

@@ -26,8 +26,8 @@ function preinst()
 
 	local log = os.tmpname()
 
-	local eMMC = "/dev/mmcblk1"
-	ret = file_exists("/dev/mmcblk1")
+	local eMMC = "/dev/mmcblk0"
+	ret = file_exists("/dev/mmcblk0")
 
 	if (ret == false) then
 		return false, "Cannot fine eMMC"
@@ -43,13 +43,13 @@ function preinst()
 	found = false
 	while (t ~= nil) do
 		j=0
-		j=string.find(t, "/dev/mmcblk1p3")
+		j=string.find(t, "/dev/mmcblk0p3")
 		fo:write(t .. "\n")
 		if (j == 1) then
 			found=true
 			break
 		end
-		j=string.find(t, "/dev/mmcblk1p2")
+		j=string.find(t, "/dev/mmcblk0p2")
 		if (j == 1) then
 			start, size = string.match(t, "%a+%s*=%s*(%d+), size=%s*(%d+)")
 		end
