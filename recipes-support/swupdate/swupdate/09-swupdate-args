@@ -13,4 +13,14 @@ else
 	SWUPDATE_SURICATTA_ARGS=" "
 fi
 
-SWUPDATE_ARGS="-H beaglebone:1.0 ${selection} -f /etc/swupdate.cfg"
+if [ -d /data ]; then
+	if [ ! -f /data/swupdate.cfg ]; then
+		cp /etc/swupdate.cfg /data
+	fi
+fi
+
+if [ -f /data/swupdate.cfg ]; then
+	SWUPDATE_ARGS="-H beaglebone:1.0 ${selection} -f /data/swupdate.cfg"
+else
+	SWUPDATE_ARGS="-H beaglebone:1.0 ${selection} -f /etc/swupdate.cfg"
+fi
